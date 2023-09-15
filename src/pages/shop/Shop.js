@@ -5,7 +5,7 @@ function Shop() {
   return (
       <div className='shop'>
           <div className='shopTitle'>
-              <h1>Pedrotech shop</h1>
+              <h1>ContextCart shop</h1>
           </div>
           <div className='products'>
               {PRODUCTS.map((product) => <Product data={product}/>)}
