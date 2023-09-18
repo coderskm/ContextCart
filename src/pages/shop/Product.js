@@ -1,23 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { ShopContext } from '../../context/ShopContextProvider';
-
-function Product( props ) {
+import { useNavigate } from 'react-router-dom';
+function Product(props) {
   const { id, productName, price, productImage } = props.data;
-  const {addToCart } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
+  const navigate = useNavigate();
+  const handleCartClick = (id) => {
+    addToCart(id);
+    navigate('/cart');
+  }
   return (
-    <div className='product' key={id} >
-      <img src={productImage} alt='products'/>
+    <div className="product" key={id}>
+      <img src={productImage} alt="products"/>
       <div className="description">
         <p>
-          <b>{productName }</b>
+          <b>{productName}</b>
         </p>
         <p>
-          ${price}
+          <b>${price}</b>
         </p>
       </div>
-      <button className='addToCartBttn' onClick={()=>addToCart(id)}>Add To Cart</button>
+      <button className="addToCartBttn" onClick={() => handleCartClick(id)}>
+        <b>Add To Cart</b>
+      </button>
     </div>
-  )
+  );
 }
 
 export default Product
